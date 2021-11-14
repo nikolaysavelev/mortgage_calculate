@@ -2,7 +2,7 @@ from mortgage_calculator import MortgageCalculator
 
 # For test
 property_value = int(input('Введите стоимость недвижимости (руб.): '))
-loan_term_year = int(input('Введите срок ипотеки (лет): '))
+loan_term_year = float(input('Введите срок ипотеки (лет): '))
 start_capital = int(input('Введите первоначальный взнос (руб.): '))
 
 #TODO: in future, ask about influence
@@ -17,7 +17,7 @@ if bank_name == 'Зеленый банк':
 elif bank_name == 'Синий банк':
     interest_rate = 7.9
 elif bank_name == '1':
-    interest_rate = 12.0
+    interest_rate = 11.5
 elif bank_name == 'ой':
     interest_rate = 10.0
 else:
@@ -42,9 +42,10 @@ print(mortgage_output.monthly_percentage())
 
 # I dont know how to realize double return better :,)
 diff_table, diff_payment_list = mortgage_output.create_diff_data()
-ann_table, ann_payment_list = mortgage_output.create_annuity_data()
+ann_table, ann_payment_list, suka, blya = mortgage_output.create_annuity_data()
 
 # Functions return name of files/plot, so you can send it to user
 #TODO: plot and tables to user
 mortgage_output.create_table(ann_table, diff_table)
 mortgage_output.create_plot(ann_payment_list, diff_payment_list)
+mortgage_output.create_pie_chart()
